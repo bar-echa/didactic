@@ -556,7 +556,9 @@ nav #icon{
     display: none;
   }
 
-  
+  #menu2 {
+    display: block;
+  }
 
 
     nav ul 
@@ -586,11 +588,15 @@ nav ul .bx{
  
  #menu1 {
     display:block;
-    font-size: 3rem; 
+    font-size: 24px; 
     cursor: pointer;
     
 }
-
+#menu2{
+    display:none;
+    font-size: 24px; 
+    cursor: pointer;
+}
 .sub-title{
     font-size: 40px;
 }
@@ -689,12 +695,15 @@ margin-left: 6rem;
     .tab-links {
         margin: 0 9px; /* Adjusted spacing for smaller screens */
     }
-    
-nav #icon{
-    font-size: 3rem;
-    margin-top: 1rem;
-    margin-right:1rem;
-}
+    #icon{
+    margin-left: 24rem;
+    margin-top: 10px;
+    width:30px;
+    cursor: pointer;
+    color: var(--primary-color);
+    transform: translate(-50%, -50%);
+    }
+
     
 }
 </style>
@@ -713,10 +722,20 @@ nav #icon{
                 <li><a href="#plants">OUR PLANTS</a></li>
                 <li><a href="#gallery">GALLERY</a></li>
                 <li><a href="#contact">CONTACT</a></li></ul>
-             
-                
-            <i class='bx bx-church'  id="menu1"></i>
-            <i class='bx bxs-sun' id="icon" class="icon1"></i>
+                <div class="menu">
+                    </div>
+            <i class='bx bx-menu' onclick="closemenu()" id="menu1"></i>
+            
+            <i class='bx bx-menu' onclick="openmenu()" id="menu2"></i>
+
+
+        
+
+        
+            <i class='bx bxs-moon' id="icon" class="icon"></i>
+
+
+            
         </nav>
         <h1>OROMOO <mark>CHRISTIAN</mark>  FELLOWSHIP NAIROBI</h1>
         </div>
@@ -756,11 +775,7 @@ nav #icon{
                         <p class="tab-links"onclick="opentab('friday')">FRI</p>
                         <p class="tab-links"onclick="opentab('saturday')">SAT</p>
                     </div>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    <div class="container">
+                    
                         <!--YOU CHANGE IN li down below-->
 
                         <div class="tab-contents active-tab" id="sunday">
@@ -812,6 +827,12 @@ nav #icon{
                                 <li><span>location</span><br>Lorem ipsum dolor sit amet consectetur,</li>
                             </ul>
                         </div>
+                </div>
+                
+                
+                
+            </div>
+        </div>
     </div>
 
 <!----About us-->
@@ -988,19 +1009,40 @@ nav #icon{
                 <span id="msg"></span>
             </div>
         </div>
-</div> 
+        
     </div>
-    <div class="container">
     <div class="copyright">copyright © ocfn2024</div>
-
 </div>
-
-
-
+</div>
 <!---javascript code downbelow-->
     <script >
-   
+        
+  function toggleMenu() {
+  var menu = document.querySelector('.');
+  menu.classList.toggle('active');
+}
 
+var tablinks = document.getElementsByClassName("tab-links");
+var tabcontents = document.getElementsByClassName("tab-contents");
+function opentab(tabname){
+    for(tablink of tablinks){
+        tablink.classList.remove("active-link")
+    }
+    for(tabcontent of tabcontents){
+        tabcontent.classList.remove("active-tab")
+    }
+    event.currentTarget.classList.add("active-link")
+    document.getElementById(tabname).classList.add("active-tab")
+}
+var sidemenu = document.getElementById("sidemenu");
+function openmenu(){
+    sidemenu.style.left = "0";
+}
+function closemenu(){
+    sidemenu.style.left = "-233px";
+    sidemenu.style.top = "-1rem";
+    sidemenu.style.alignItems ="left";
+}
 const scriptURL = ''
 const form = document.forms['submit-to-google-sheet']
 const msg = document.getElementById("msg")
@@ -1057,7 +1099,24 @@ function myFunction2() {
     moreText.style.display = "inline";
   }
 }
+function myFunction4() {
+    var lessText = document.getElementById("less1");
+    var moreText = document.getElementById("more1");
+    var btnText = document.getElementById("myBtn1");
 
+    if (moreText.style.display === "none") {
+        lessText.style.display = "none";
+        moreText.style.display = "inline";
+        btnText.innerHTML = "See less"; 
+    } else {
+        lessText.style.display ="inline";
+        moreText.style.display = "none";
+        btnText.innerHTML = "See more"; 
+
+        document.getElementById('3r').scrollIntoView({behavior:"smooth"});
+        
+    }
+}
 function myFunction3() {
     var lessText2 = document.getElementById("less2");
     var moreText2 = document.getElementById("more2");
