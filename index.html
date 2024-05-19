@@ -703,7 +703,10 @@ margin-left: 6rem;
     color: var(--primary-color);
     transform: translate(-50%, -50%);
     }
-
+#msg{
+    margin-top: 1rem;
+    font-size: 2rem;
+}
     
 }
 </style>
@@ -1044,7 +1047,7 @@ fetch(scriptURL, { method: 'POST', body: new FormData(form)})
 msg.innerHTML = "message sent successfully"
 setTimeout(function(){
  msg.innerHTML =""
-},5000)
+},10000)
 form.reset()
 })
 .catch(error => console.error('Error!', error.message))
